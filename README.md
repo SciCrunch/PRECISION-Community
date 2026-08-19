@@ -12,15 +12,7 @@ design, published at [SciCrunch/PRECISION-Community](https://github.com/SciCrunc
 
 That's it for now. The page was deliberately simplified — see below.
 
-## What was removed, and why
-
-The original design mocked up a Stats dashboard, a Sources table, a Term
-Sets table, an in-page search bar, and three linked detail pages
-(`interlex_grid_view.html`, `interlex_termset_view.html`,
-`interlex_cellcard_v7.html`). All of that was backed by fabricated
-placeholder numbers and citations — nothing real. Rather than ship fake data,
-those sections were removed and replaced with a single clear link out to the
-real data source:
+This page serves to direct people quickly to the cell ontology files on InterLex at this location:
 
 **https://interlex.dev.metacell.us/precision/ontology/precision**
 
@@ -47,13 +39,3 @@ Search this project for `TODO` for inline notes. The main ones:
 3. **Wire up real commenting** (or drop the comment form entirely) once
    there's a backend or a service like Giscus/Utterances to actually persist
    submissions.
-
-## Publishing to GitHub Pages
-
-1. Push `index.html` and `README.md` to the `main` branch of
-   `SciCrunch/PRECISION-Community`.
-2. In the repo, go to **Settings → Pages**.
-3. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-4. Under **Branch**, choose `main` and `/ (root)`, then **Save**.
-5. GitHub will publish the site at `https://scicrunch.github.io/PRECISION-Community/`
-   (can take a minute or two the first time).
