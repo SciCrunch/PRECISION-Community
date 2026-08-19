@@ -1,57 +1,59 @@
 # InterLex — PRECISION Human Pain Network (GitHub Pages)
 
-This is a standalone GitHub Pages version of the InterLex Community page design
-you uploaded (`interlex_org_view.html`), renamed to `index.html` so it serves
-as the site's home page.
+This is a standalone GitHub Pages version of the InterLex Community page
+design, published at [SciCrunch/PRECISION-Community](https://github.com/SciCrunch/PRECISION-Community)
+→ `https://scicrunch.github.io/PRECISION-Community/`.
 
 ## What's here
 
-- `index.html` — the Community page (org header, stats, asset tiles, sources
-  table, term sets, discussion thread)
-- `js/data.js` — **sample placeholder data** the page reads to populate the
-  stats and sources table
-- `interlex_grid_view.html`, `interlex_termset_view.html`,
-  `interlex_cellcard_v7.html` — placeholder stub pages so the links on the
-  Community page don't 404
+- `index.html` — the Community page: org header/description, the "Explore"
+  tile grid (linking out to the real ontology tool, NervoSensus, and SPARC
+  public datasets), and the discussion thread.
 
-## TODOs before this is a real, published site
+That's it for now. The page was deliberately simplified — see below.
 
-Search this project for `TODO` — every spot that needs your attention is
-marked inline:
+## What was removed, and why
 
-1. **`js/data.js`** — replace `DEFAULT_CELL_TYPES`, `DEFAULT_GENES`, and
-   `DEFAULT_SOURCES` with your real dataset (the original page loaded this
-   from a private internal path that isn't available on GitHub Pages).
-2. **`interlex_grid_view.html`** — build the real interactive cell-type grid.
-3. **`interlex_termset_view.html`** — build the real term-set detail view
-   (reads a `?set=` query param).
-4. **`interlex_cellcard_v7.html`** — build the real individual cell-type
-   detail card.
-5. **`index.html`** — the Term Sets table and Discussion comments are still
-   hardcoded sample content from the original design; the comment "Submit"
-   button only stores new comments in memory (they vanish on refresh) since
-   there's no backend wired up.
+The original design mocked up a Stats dashboard, a Sources table, a Term
+Sets table, an in-page search bar, and three linked detail pages
+(`interlex_grid_view.html`, `interlex_termset_view.html`,
+`interlex_cellcard_v7.html`). All of that was backed by fabricated
+placeholder numbers and citations — nothing real. Rather than ship fake data,
+those sections were removed and replaced with a single clear link out to the
+real data source:
+
+**https://interlex.dev.metacell.us/precision/ontology/precision**
+
+That's the "Precision Cell Data" tile at the top of the Explore section.
+
+The comment "Submit" button is disabled with a "coming soon" note, since
+there's no backend to actually save submissions yet — voting on existing
+comments still works, but resets when the page reloads (no backend for that
+either).
+
+## Remaining TODOs
+
+Search this project for `TODO` for inline notes. The main ones:
+
+1. **Verify the discussion comments.** The three comments in `index.html`
+   were carried over from the original design file, not written by anyone on
+   this project — confirm whether they're real curator/community
+   correspondence or placeholder mockup content before treating this as live.
+2. **Decide how "Explore" should evolve.** Right now it just links out to the
+   ontology tool. If/when there's a real way to pull structured data from
+   that ontology (an API, an export, etc.), the Stats dashboard and Sources
+   table from the original design could come back, populated with real
+   numbers instead of invented ones.
+3. **Wire up real commenting** (or drop the comment form entirely) once
+   there's a backend or a service like Giscus/Utterances to actually persist
+   submissions.
 
 ## Publishing to GitHub Pages
 
-1. Create a new repository on GitHub (or use an existing one).
-2. Push these files to the repo, e.g.:
-   ```bash
-   git init
-   git add .
-   git commit -m "Add InterLex Community page"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo>.git
-   git push -u origin main
-   ```
-3. In the repo, go to **Settings → Pages**.
-4. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-5. Under **Branch**, choose `main` and `/ (root)`, then **Save**.
-6. GitHub will publish the site at:
-   `https://<your-username>.github.io/<your-repo>/`
-   (this can take a minute or two the first time)
-
-If you'd rather this be a *user/org* page (`<your-username>.github.io`)
-instead of a project page, name the repo exactly `<your-username>.github.io`
-and push these files to its `main` branch — no extra Pages configuration
-needed.
+1. Push `index.html` and `README.md` to the `main` branch of
+   `SciCrunch/PRECISION-Community`.
+2. In the repo, go to **Settings → Pages**.
+3. Under **Build and deployment → Source**, choose **Deploy from a branch**.
+4. Under **Branch**, choose `main` and `/ (root)`, then **Save**.
+5. GitHub will publish the site at `https://scicrunch.github.io/PRECISION-Community/`
+   (can take a minute or two the first time).
