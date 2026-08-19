@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InterLex — PRECISION Human Pain Network</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;font-size:13px;background:#f0f3f7;color:#333}
+a{color:#1a73a7;text-decoration:none}a:hover{text-decoration:underline}
+
+/* Site header */
+.sh{background:#2c6da4;color:#fff;padding:8px 16px;display:flex;align-items:center;gap:16px}
+.sh .logo{font-weight:bold;font-size:15px}
+.sh .nav a{color:rgba(255,255,255,.85);font-size:12px;margin-left:12px}
+.sh .srch{margin-left:auto;display:flex;gap:6px}
+.sh .srch input{padding:3px 8px;border:1px solid rgba(255,255,255,.4);border-radius:3px;background:rgba(255,255,255,.15);color:#fff;font-size:12px;width:180px}
+.sh .srch input::placeholder{color:rgba(255,255,255,.6)}
+.sh .srch button{padding:3px 10px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:3px;color:#fff;font-size:12px;cursor:pointer}
+
+/* Tabs */
+.tabs{background:#fff;border-bottom:2px solid #2c6da4;display:flex;padding:0 16px}
+.tab{padding:8px 14px;font-size:13px;color:#555;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tab:hover{color:#2c6da4;background:#f0f5fb}
+.tab.active{color:#2c6da4;font-weight:bold;border-bottom:3px solid #2c6da4}
+
+/* Page content */
+.page{max-width:1100px;margin:0 auto;padding:24px 16px}
+
+/* Org header */
+.org-header{background:#fff;border:1px solid #d0d8e0;border-radius:6px;padding:24px 28px;margin-bottom:20px;display:flex;gap:24px;align-items:flex-start}
+.org-icon{width:80px;height:80px;background:#1a3a5c;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.org-icon svg{width:48px;height:48px;fill:#fff}
+.org-info{flex:1}
+.org-info h1{font-size:22px;color:#1a3a5c;margin-bottom:4px}
+.org-info .org-id{font-family:monospace;font-size:12px;color:#888;margin-bottom:10px}
+.org-info p{font-size:13px;line-height:1.6;color:#444;margin-bottom:0}
+
+/* Search bar */
+.org-search{background:#fff;border:1px solid #d0d8e0;border-radius:6px;padding:14px 20px;margin-bottom:20px;display:flex;gap:10px;align-items:center}
+.org-search input{flex:1;padding:8px 14px;border:1px solid #c0cdd8;border-radius:4px;font-size:13px;color:#333}
+.org-search input::placeholder{color:#aaa}
+.org-search button{padding:8px 18px;background:#2c6da4;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:bold;cursor:pointer;white-space:nowrap}
+.org-search button:hover{background:#1a5276}
+
+/* Stats dashboard */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{background:#fff;border:1px solid #d0d8e0;border-radius:6px;padding:16px 14px;text-align:center}
+.stat-num{font-size:28px;font-weight:bold;color:#1a3a5c;line-height:1.1}
+.stat-label{font-size:11px;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+.stat-icon{font-size:18px;margin-bottom:4px;display:block}
+
+/* Section label */
+.section-label{font-size:11px;font-weight:bold;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+
+/* Asset tiles */
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:14px;margin-bottom:24px}
+.asset-tile{background:#fff;border:1px solid #d0d8e0;border-radius:6px;overflow:hidden;cursor:pointer;transition:box-shadow .15s, transform .15s;text-decoration:none;color:inherit;display:block}
+.asset-tile:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px);text-decoration:none}
+.tile-img{height:130px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.tile-img svg{width:56px;height:56px;opacity:.85}
+.tile-body{padding:12px 14px}
+.tile-title{font-size:14px;font-weight:bold;color:#1a3a5c;margin-bottom:4px}
+.tile-desc{font-size:11px;color:#666;line-height:1.5}
+.tile-arrow{float:right;font-size:16px;color:#2c6da4;margin-top:-18px}
+
+/* Sources table */
+.source-table-wrap{background:#fff;border:1px solid #d0d8e0;border-radius:6px;overflow:hidden;margin-bottom:24px}
+.source-table-hdr{background:#1a3a5c;color:#fff;padding:10px 16px;font-size:13px;font-weight:bold}
+table.src-tbl{width:100%;border-collapse:collapse;font-size:12px}
+table.src-tbl th{background:#f0f3f7;text-align:left;padding:8px 14px;font-size:11px;color:#555;font-weight:bold;border-bottom:1px solid #d0d8e0}
+table.src-tbl td{padding:8px 14px;border-bottom:1px solid #eef0f4;color:#333}
+table.src-tbl tr:last-child td{border-bottom:none}
+table.src-tbl tr:hover{background:#f7f9fb}
+.tbl-link{color:#2c6da4;font-weight:bold;font-size:11px}
+.cell-count-badge{display:inline-block;background:#d6e8f5;color:#1a5276;font-weight:bold;padding:2px 8px;border-radius:10px;font-size:11px}
+
+/* Discussion */
+.disc-wrap{background:#fff;border:1px solid #d0d8e0;border-radius:6px;overflow:hidden;margin-bottom:24px}
+.disc-hdr{background:#1a3a5c;color:#fff;padding:10px 16px;font-size:13px;font-weight:bold}
+.comment-item{padding:9px 10px;border-bottom:1px solid #f0f0f0;font-size:12px}
+.comment-item:last-child{border-bottom:none}
+.cmeta{display:flex;gap:8px;align-items:center;margin-bottom:4px;flex-wrap:wrap}
+.cauth{font-weight:bold;color:#1a3a5c;font-size:12px}
+.cdate{color:#aaa;font-size:10px}
+.cpage{font-size:10px;color:#1a73a7;text-decoration:none;background:#f7f9fb;border:1px solid #d0d8e0;padding:1px 6px;border-radius:10px;white-space:nowrap}
+.cpage:hover{background:#e8f0f8;border-color:#2c6da4}
+.cvotes{display:flex;gap:4px;align-items:center;margin-left:auto}
+.vbtn{background:none;border:1px solid #ddd;border-radius:3px;padding:2px 9px;font-size:11px;cursor:pointer;color:#666;transition:all .2s}
+.vbtn:hover{border-color:#2c6da4;color:#2c6da4;background:#eef4fb}
+.vbtn.voted-up{border-color:#1a7a40;color:#1a7a40;background:#edf7f0;font-weight:bold}
+.vbtn.voted-dn{border-color:#a03030;color:#a03030;background:#fdf0f0;font-weight:bold}
+.vote-hint{font-size:10px;color:#bbb;font-style:italic;margin-top:3px}
+.cform{padding:10px;background:#f7f9fb;border-top:1px solid #e0e8f0}
+.cform-header{font-size:11px;font-weight:bold;color:#2c6da4;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cform textarea{width:100%;border:1px solid #ccd8e8;border-radius:3px;padding:6px 8px;font-size:12px;font-family:Arial,sans-serif;resize:vertical;min-height:60px;color:#333;background:#fff;transition:border-color .15s}
+.cform textarea:focus{outline:none;border-color:#2c6da4}
+.cform-hint{font-size:10px;color:#aaa;margin-top:4px}
+.subrow{display:flex;gap:6px;margin-top:8px;align-items:center}
+.submit-btn{padding:4px 16px;background:#2c6da4;color:#fff;border:none;border-radius:3px;font-size:12px;cursor:pointer;transition:background .15s}
+.submit-btn:hover{background:#1a5a8a}
+.anon-note{font-size:10px;color:#aaa;margin-left:auto;font-style:italic}
+
+/* Footer */
+.site-footer{background:#1a3a5c;color:rgba(255,255,255,.7);padding:16px 24px;font-size:11px;text-align:center;margin-top:24px}
+.site-footer a{color:rgba(255,255,255,.85)}
+.site-footer a:hover{color:#fff}
+
+@media(max-width:700px){
+  .org-header{flex-direction:column;align-items:center;text-align:center}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .asset-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Site header -->
+<div class="sh">
+  <span class="logo">InterLex</span>
+  <nav class="nav"><a href="#">Home</a><a href="#">Browse</a><a href="#">Contribute</a><a href="#">Help</a></nav>
+  <div class="srch"><input placeholder="Search terms…"/><button>Search</button></div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <div class="tab">Cell Grid</div>
+  <div class="tab active">Community</div>
+  <div class="tab">Browse Ontology</div>
+</div>
+
+<!-- Page -->
+<div class="page">
+
+  <!-- Org header -->
+  <div class="org-header">
+    <div class="org-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+    </div>
+    <div class="org-info">
+      <h1>PRECISION Human Pain Network</h1>
+      <div class="org-id">npokb · InterLex Organization</div>
+      <p>The PRECISION Human Pain Network is a community of researchers building standardized cell type models for peripheral sensory neurons. By integrating nomenclature from multiple published sources and species, the network provides a shared framework for classifying, comparing, and annotating pain-related neuron types — enabling reproducible research and cross-study alignment across the pain neuroscience community.</p>
+    </div>
+  </div>
+
+  <!-- Search within org -->
+  <div class="org-search">
+    <input type="text" id="orgSearchInput" placeholder="Search cells, genes, or sources within this organization…"/>
+    <button onclick="doSearch()">Search</button>
+  </div>
+
+  <!-- Statistics dashboard -->
+  <div class="section-label">At a Glance</div>
+  <div class="stats-bar">
+    <div class="stat-card">
+      <span class="stat-icon">📊</span>
+      <div class="stat-num" id="statSources">—</div>
+      <div class="stat-label">Sources</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">🧬</span>
+      <div class="stat-num" id="statCells">—</div>
+      <div class="stat-label">Cell Types</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">🐾</span>
+      <div class="stat-num" id="statSpecies">—</div>
+      <div class="stat-label">Species</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">🏷️</span>
+      <div class="stat-num" id="statTerms">—</div>
+      <div class="stat-label">Anatomical Terms</div>
+    </div>
+  </div>
+
+  <!-- Asset tiles -->
+  <div class="section-label">Explore</div>
+  <div class="asset-grid">
+
+    <!-- 1. Cell grid -->
+    <a class="asset-tile" href="interlex_grid_view.html">
+      <div class="tile-img" style="background:linear-gradient(135deg,#d6e8f5,#f0f3f7)">
+        <svg viewBox="0 0 24 24" fill="#2c6da4"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-title">Explore Cell Types <span class="tile-arrow">→</span></div>
+        <div class="tile-desc">Browse and filter all curated sensory neuron cell types in an interactive card grid.</div>
+      </div>
+    </a>
+
+    <!-- 2. NervoSensus -->
+    <a class="asset-tile" href="https://devservosensus.netlify.app/" target="_blank">
+      <div class="tile-img" style="background:linear-gradient(135deg,#d5f0e0,#f0f3f7)">
+        <svg viewBox="0 0 24 24" fill="#1a5e37"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-title">NervoSensus <span class="tile-arrow">↗</span></div>
+        <div class="tile-desc">Explore the interactive cell type visualization tool for peripheral sensory neurons.</div>
+      </div>
+    </a>
+
+    <!-- 3. Public datasets -->
+    <a class="asset-tile" href="https://sparc.science/data?type=dataset&selectedFacetIds=HEAL+Precision&skip=0" target="_blank">
+      <div class="tile-img" style="background:linear-gradient(135deg,#fde8cc,#f0f3f7)">
+        <svg viewBox="0 0 24 24" fill="#7a4000"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+      </div>
+      <div class="tile-body">
+        <div class="tile-title">Public Datasets <span class="tile-arrow">↗</span></div>
+        <div class="tile-desc">Access all publicly available datasets on SPARC related to precision neuroscience.</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Sources table -->
+  <div class="section-label">Sources</div>
+  <div class="source-table-wrap">
+    <div class="source-table-hdr">Published Data Sources</div>
+    <table class="src-tbl">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Cells</th>
+          <th>Species</th>
+          <th>Data</th>
+          <th>Publication</th>
+        </tr>
+      </thead>
+      <tbody id="sourceTableBody">
+        <tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px">Loading sources…</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Term Sets -->
+  <div class="section-label" id="termsets">Term Sets</div>
+  <div class="source-table-wrap">
+    <div class="source-table-hdr">Community Term Sets</div>
+    <table class="src-tbl">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th style="width:60px">Terms</th>
+          <th style="width:100px">Last Modified</th>
+          <th style="width:60px">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TODO: This term-set table is still hardcoded from the original design.
+             Replace these rows with real data, or generate them dynamically like the
+             Sources table above, once you have real term set content. -->
+        <tr>
+          <td><strong>PRECISION Methods Used</strong></td>
+          <td>Experimental and computational methods referenced across cell type models</td>
+          <td><span class="cell-count-badge">12</span></td>
+          <td>2026-03-15</td>
+          <td><a class="tbl-link" href="interlex_termset_view.html?set=methods">View →</a></td>
+        </tr>
+        <tr>
+          <td><strong>PRECISION Anatomical Locations</strong></td>
+          <td>Anatomical structures and regions where cells are located or project to</td>
+          <td><span class="cell-count-badge">18</span></td>
+          <td>2026-05-22</td>
+          <td><a class="tbl-link" href="interlex_termset_view.html?set=anatomical">View →</a></td>
+        </tr>
+        <tr>
+          <td><strong>PRECISION Genes</strong></td>
+          <td>Marker genes and transcription factors used for cell type classification</td>
+          <td><span class="cell-count-badge">15</span></td>
+          <td>2026-06-30</td>
+          <td><a class="tbl-link" href="interlex_termset_view.html?set=genes">View →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Discussion -->
+  <div class="section-label">Discussion</div>
+  <div class="disc-wrap">
+    <div class="disc-hdr">Community Discussion</div>
+    <div id="comment-thread">
+      <!-- TODO: These comments are sample/demo content from the original design.
+           Replace with real discussion, or hook up a real backend, since the
+           "Submit" button below only appends comments in-memory (they vanish on reload). -->
+      <div class="comment-item">
+        <div class="cmeta">
+          <span class="cauth">Precision Curator</span>
+          <span class="cdate">2025-11-05</span>
+                    <a class="cpage" href="interlex_cellcard_v7.html" title="Comment left on: A-PEP.SCGN/ADRA2C">📄 A-PEP.SCGN/ADRA2C</a>
+          <div class="cvotes">
+            <button class="vbtn" id="v-c1-up" onclick="vote('c1','up')">▲ <span id="vc-c1-up">3</span></button>
+            <button class="vbtn" id="v-c1-dn" onclick="vote('c1','dn')">▼ <span id="vc-c1-dn">0</span></button>
+          </div>
+        </div>
+        <div>See Table S12 of <a href="https://doi.org/10.1101/2025.11.05.686654" target="_blank">doi.org/10.1101/2025.11.05.686654 ↗</a> for asserted equivalences across sources. DRG Aδ HTMR (npokb:1015) flagged "don't add" — included as proposed evidence only.</div>
+        <div class="vote-hint">Click ▲ or ▼ to vote · No login required</div>
+      </div>
+      <div class="comment-item">
+        <div class="cmeta">
+          <span class="cauth">Community Member</span>
+          <span class="cdate">2025-12-18</span>
+                    <a class="cpage" href="interlex_org_view.html" title="Comment left on: Community page">📄 Community</a>
+          <div class="cvotes">
+            <button class="vbtn" id="v-c2-up" onclick="vote('c2','up')">▲ <span id="vc-c2-up">1</span></button>
+            <button class="vbtn" id="v-c2-dn" onclick="vote('c2','dn')">▼ <span id="vc-c2-dn">0</span></button>
+          </div>
+        </div>
+        <div>Would it be possible to add fiber conduction velocity ranges to the cell models? Several of the DRG paper cell types have this data available in supplementary tables.</div>
+      </div>
+      <div class="comment-item">
+        <div class="cmeta">
+          <span class="cauth">Precision Curator</span>
+          <span class="cdate">2026-01-10</span>
+                    <a class="cpage" href="interlex_org_view.html" title="Comment left on: Community page">📄 Community</a>
+          <div class="cvotes">
+            <button class="vbtn" id="v-c3-up" onclick="vote('c3','up')">▲ <span id="vc-c3-up">2</span></button>
+            <button class="vbtn" id="v-c3-dn" onclick="vote('c3','dn')">▼ <span id="vc-c3-dn">0</span></button>
+          </div>
+        </div>
+        <div>Good suggestion — conduction velocity is on the roadmap for the next data release. We're also planning to integrate single-cell RNA-seq cluster assignments where available.</div>
+      </div>
+    </div>
+    <div class="cform">
+      <div class="cform-header">💬 Leave a comment</div>
+      <textarea id="comment-ta" placeholder="Share a question, correction, or suggestion about this organization's data…" rows="3"></textarea>
+      <div class="cform-hint">Comments are public · No account required · <a href="#">Sign in</a> to post under your name</div>
+      <div class="subrow">
+        <button class="submit-btn" onclick="submitComment()">Submit</button>
+        <span class="anon-note">Posting as: Anonymous</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="site-footer">
+  Part of <a href="https://scicrunch.org/sawg" target="_blank">scicrunch.org/sawg</a> · Powered by <a href="https://scicrunch.org/nif/interlex/dashboard" target="_blank">InterLex</a> · SPARC Anatomy Working Group
+</div>
+
+<!--
+  TODO: This originally loaded ../../../NPO/nervosensus/js/data.js from a private
+  internal path that doesn't exist on GitHub Pages. It now points at a local
+  js/data.js containing SAMPLE placeholder data (see that file's own TODO comments)
+  so the page renders standalone. Swap in your real dataset before publishing for real.
+-->
+<script src="js/data.js"></script>
+<script>
+(function(){
+'use strict';
+
+var CELL_TYPES = DEFAULT_CELL_TYPES;
+var GENES = DEFAULT_GENES;
+var SOURCES = DEFAULT_SOURCES;
+
+// Compute stats
+var speciesSet = {};
+var anatomicalTerms = {};
+CELL_TYPES.forEach(function(ct){
+  if(ct.species) speciesSet[ct.species] = true;
+  if(ct.somaLocations && ct.somaLocations.length){
+    ct.somaLocations.forEach(function(loc){ anatomicalTerms[loc] = true; });
+  } else if(ct.somaLocation){
+    anatomicalTerms[ct.somaLocation] = true;
+  }
+  if(ct.axonSensoryTermination) anatomicalTerms[ct.axonSensoryTermination] = true;
+  if(ct.axonTerminalLocation) anatomicalTerms[ct.axonTerminalLocation] = true;
+  if(ct.projectionTarget) anatomicalTerms[ct.projectionTarget] = true;
+});
+
+document.getElementById('statSources').textContent = SOURCES.length;
+document.getElementById('statCells').textContent = CELL_TYPES.length;
+document.getElementById('statSpecies').textContent = Object.keys(speciesSet).length;
+document.getElementById('statTerms').textContent = Object.keys(anatomicalTerms).length;
+
+// Build sources table
+var sourceCounts = {};
+var sourceSpecies = {};
+CELL_TYPES.forEach(function(ct){
+  var s = ct.sourceNomenclatureLabel;
+  if(!s) return;
+  sourceCounts[s] = (sourceCounts[s] || 0) + 1;
+  if(!sourceSpecies[s]) sourceSpecies[s] = {};
+  if(ct.species) sourceSpecies[s][ct.species] = true;
+});
+
+var tbody = document.getElementById('sourceTableBody');
+var rows = '';
+SOURCES.forEach(function(src){
+  var label = src.label || src.name || src;
+  var count = sourceCounts[label] || 0;
+  var species = sourceSpecies[label] ? Object.keys(sourceSpecies[label]).join(', ') : '—';
+  var doi = src.doi || '';
+  var doiLink = doi ? '<a class="tbl-link" href="' + (doi.startsWith('http') ? doi : 'https://doi.org/' + doi) + '" target="_blank">DOI ↗</a>' : '<span style="color:#ccc">—</span>';
+
+  rows += '<tr>';
+  rows += '<td><strong>' + label + '</strong></td>';
+  rows += '<td><span class="cell-count-badge">' + count + '</span></td>';
+  rows += '<td>' + species + '</td>';
+  rows += '<td><a class="tbl-link" href="interlex_grid_view.html?source='+encodeURIComponent(label)+'">View cells →</a></td>';
+  rows += '<td>' + doiLink + '</td>';
+  rows += '</tr>';
+});
+
+if(rows) tbody.innerHTML = rows;
+
+// Search
+window.doSearch = function(){
+  var q = document.getElementById('orgSearchInput').value.trim();
+  if(q) window.location.href = 'interlex_grid_view.html';
+};
+document.getElementById('orgSearchInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') window.doSearch();
+});
+
+// Voting
+var votes = {};
+window.vote = function(cid, dir){
+  var up = document.getElementById('v-'+cid+'-up');
+  var dn = document.getElementById('v-'+cid+'-dn');
+  var upN = document.getElementById('vc-'+cid+'-up');
+  var dnN = document.getElementById('vc-'+cid+'-dn');
+  var prev = votes[cid];
+  function adj(el, d){ el.textContent = parseInt(el.textContent) + d; }
+  if(prev === dir){
+    votes[cid] = null;
+    (dir==='up' ? up : dn).classList.remove('voted-up','voted-dn');
+    adj(dir==='up' ? upN : dnN, -1);
+  } else {
+    if(prev==='up'){ up.classList.remove('voted-up'); adj(upN, -1); }
+    if(prev==='dn'){ dn.classList.remove('voted-dn'); adj(dnN, -1); }
+    votes[cid] = dir;
+    (dir==='up' ? up : dn).classList.add('voted-'+dir);
+    adj(dir==='up' ? upN : dnN, +1);
+  }
+};
+
+// Submit comment
+window.submitComment = function(){
+  var ta = document.getElementById('comment-ta');
+  var thread = document.getElementById('comment-thread');
+  var text = ta.value.trim();
+  if(!text) return;
+  var now = new Date().toISOString().slice(0,10);
+  var cid = 'c' + Date.now();
+  var pageCtx = '<a class="cpage" href="index.html" title="Comment left on: Community page">📄 Community</a>';
+  var item = document.createElement('div');
+  item.className = 'comment-item';
+  item.innerHTML = '<div class="cmeta"><span class="cauth">Anonymous</span><span class="cdate">'+now+'</span>'+pageCtx+'<div class="cvotes" style="margin-left:auto"><button class="vbtn" id="v-'+cid+'-up" onclick="vote(\''+cid+'\',\'up\')">▲ <span id="vc-'+cid+'-up">0</span></button><button class="vbtn" id="v-'+cid+'-dn" onclick="vote(\''+cid+'\',\'dn\')">▼ <span id="vc-'+cid+'-dn">0</span></button></div></div><div>'+text+'</div>';
+  thread.appendChild(item);
+  ta.value = '';
+  // TODO: This only stores the comment in the browser's memory for the current
+  // visit — it is NOT saved anywhere and disappears on refresh. Wire this up to
+  // a real backend/API (or a service like Giscus/Utterances) before relying on it.
+};
+
+})();
+</script>
+</body>
+</html>
