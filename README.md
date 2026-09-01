@@ -1,4 +1,4 @@
-# InterLex — PRECISION Human Pain Network (GitHub Pages)
+# InterLex — PRECISION Human Pain Network
 
 This is a standalone GitHub Pages version of the InterLex Community page
 design, published at [SciCrunch/PRECISION-Community](https://github.com/SciCrunch/PRECISION-Community)
