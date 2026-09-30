@@ -1,0 +1,11 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "Papers"
+    url: /papers/
+  - title: "By Method"
+    url: /by-method/
+  - title: "By Species"
+    url: /by-species/
+  - title: "Tools"
+    url: /tools/

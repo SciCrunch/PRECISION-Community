@@ -1,41 +1,47 @@
-# InterLex — PRECISION Human Pain Network
+# PRECISION Human Pain Network — Community Site
 
-This is a standalone GitHub Pages version of the InterLex Community page
-design, published at [SciCrunch/PRECISION-Community](https://github.com/SciCrunch/PRECISION-Community)
-→ `https://scicrunch.github.io/PRECISION-Community/`.
+GitHub Pages site for the [PRECISION Human Pain Network](https://precision.scicrunch.org),
+built with Jekyll + [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme.
 
-## What's here
+## Structure
 
-- `index.html` — the Community page: org header/description, the "Explore"
-  tile grid (linking out to the real ontology tool, NervoSensus, and SPARC
-  public datasets), and the discussion thread.
+```
+_config.yml              # Jekyll configuration + Minimal Mistakes remote theme
+_data/
+  papers.yml             # Paper metadata (single source of truth for all pages)
+  navigation.yml         # Sidebar/header nav links
+_pages/
+  papers.md              # Full paper table with per-paper detail sections
+  by-method.md           # Papers grouped by experimental method
+  by-species.md          # Papers grouped by species
+  tools.md               # Links to NervoSensus, InterLex, Dashboard, SPARC
+index.md                 # Landing page: project overview, stats, paper summary
+CNAME                    # Custom domain → precision.scicrunch.org
+Gemfile                  # Ruby dependencies (for local development)
+```
 
-That's it for now. The page was deliberately simplified — see below.
+## How it works
 
-This page serves to direct people quickly to the cell ontology files on InterLex at this location:
+All paper information lives in `_data/papers.yml`. Every page that shows
+paper data (the landing page summary, the paper table, the method/species
+cross-reference views) reads from that single file using Liquid templates.
 
-**https://interlex.dev.metacell.us/precision/ontology/precision**
+**To add a paper:** add an entry to `_data/papers.yml` — every page updates
+automatically.
 
-That's the "Precision Cell Data" tile at the top of the Explore section.
+**To add a method or species facet:** just include it in the paper's `methods`
+or `species` list — the browse pages auto-generate sections for each unique
+value.
 
-The comment "Submit" button is disabled with a "coming soon" note, since
-there's no backend to actually save submissions yet — voting on existing
-comments still works, but resets when the page reloads (no backend for that
-either).
+## Local development
 
-## Remaining TODOs
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
-Search this project for `TODO` for inline notes. The main ones:
+Then open `http://localhost:4000`.
 
-1. **Verify the discussion comments.** The three comments in `index.html`
-   were carried over from the original design file, not written by anyone on
-   this project — confirm whether they're real curator/community
-   correspondence or placeholder mockup content before treating this as live.
-2. **Decide how "Explore" should evolve.** Right now it just links out to the
-   ontology tool. If/when there's a real way to pull structured data from
-   that ontology (an API, an export, etc.), the Stats dashboard and Sources
-   table from the original design could come back, populated with real
-   numbers instead of invented ones.
-3. **Wire up real commenting** (or drop the comment form entirely) once
-   there's a backend or a service like Giscus/Utterances to actually persist
-   submissions.
+## Deployment
+
+Push to `main` — GitHub Pages builds and deploys automatically.

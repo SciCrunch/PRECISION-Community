@@ -1,0 +1,199 @@
+# _data/papers.yml
+# Paper-level metadata for the PRECISION Community landing page.
+#
+# Each entry represents one literature source integrated into NervoSensus.
+# Fields marked "# TODO" need to be filled in from the paper or its cell-level CSV.
+#
+# The landing page reads this file to:
+#   - render the paper summary table
+#   - compute aggregate stats (total papers, total cell types, methods represented)
+#   - generate cross-reference views (by method, consortium, species)
+#   - link out to NervoSensus, InterLex, SPARC, and the PRECISION Dashboard
+
+# ─────────────────────────────────────────────────────────────
+# source_0: CSA paper (Cross-Species Atlas)
+# ─────────────────────────────────────────────────────────────
+- id: csa-paper
+  doi: "https://doi.org/10.1126/sciadv.adj9173"
+  title: "Harmonized cross-species cell atlases of trigeminal and dorsal root ganglia"
+  authors: "Bhuiyan et al."
+  year: 2024
+  journal: "Science Advances"
+  short_label: "CSA paper"
+  consortium: "HEAL PRECISION"
+  species:
+    - human
+    - mouse
+    - macaque
+    - guinea pig
+  methods:                          # TODO: confirm full method list
+    - scRNA-seq
+  cell_types_count: 54
+  sex: []                           # TODO
+  age_range: ""                     # TODO
+  anatomical_focus: "DRG, trigeminal ganglion"  # TODO: confirm
+  drg_regions: []                   # TODO
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: ""                       # TODO: SPARC dataset link if available
+
+# ─────────────────────────────────────────────────────────────
+# source_1: big DRG paper (Reference Atlas)
+# ─────────────────────────────────────────────────────────────
+- id: big-drg-paper
+  doi: "https://doi.org/10.1101/2025.11.05.686654"
+  title: "A Reference Atlas of the Human Dorsal Root Ganglion"
+  authors: "Bhuiyan, Nagi, Sankaranarayanan et al."
+  year: 2025
+  journal: "bioRxiv"
+  short_label: "big DRG paper"
+  consortium: "HEAL PRECISION"
+  species:
+    - human
+  methods:                          # TODO: confirm full method list
+    - scRNA-seq
+    - spatial transcriptomics
+  cell_types_count: 32
+  sex:
+    - female
+    - male
+  age_range: "0.17-86 years"
+  anatomical_focus: "DRG (cervical, thoracic, lumbar)"
+  drg_regions:
+    - "cervical (C2)"
+    - "thoracic (T2-T12)"
+    - "lumbar (L1-L5)"
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: "https://sparc.science/data?type=dataset&selectedFacetIds=HEAL+Precision&skip=0"
+
+# ─────────────────────────────────────────────────────────────
+# source_2: Tavares-Ferreira et al., 2022
+# ─────────────────────────────────────────────────────────────
+- id: tavares-ferreira-2022
+  doi: "https://doi.org/10.1126/scitranslmed.abj8186"
+  title: "Spatial transcriptomics of dorsal root ganglia identifies molecular signatures of human nociceptors"
+  authors: "Tavares-Ferreira, Shiers, Ray et al."
+  year: 2022
+  journal: "Science Translational Medicine"
+  short_label: "Tavares-Ferreira 2022"
+  consortium: ""                    # TODO: consortium affiliation
+  species:
+    - human
+  methods:                          # TODO: confirm full method list
+    - spatial transcriptomics
+    - scRNA-seq
+  cell_types_count: 12
+  sex: []                           # TODO
+  age_range: ""                     # TODO
+  anatomical_focus: ""              # TODO
+  drg_regions: []                   # TODO
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: ""                       # TODO
+
+# ─────────────────────────────────────────────────────────────
+# source_3: Yu et al., 2024
+# ─────────────────────────────────────────────────────────────
+- id: yu-2024
+  doi: "https://doi.org/10.1038/s41593-024-01794-1"
+  title: "Leveraging deep single-soma RNA sequencing to explore the neural basis of human somatosensation"
+  authors: "Yu, Nagi, Usoskin et al."
+  year: 2024
+  journal: "Nature Neuroscience"
+  short_label: "Yu 2024"
+  consortium: ""                    # TODO: consortium affiliation
+  species:
+    - human
+  methods:                          # TODO: confirm full method list
+    - scRNA-seq
+  cell_types_count: 16
+  sex: []                           # TODO
+  age_range: ""                     # TODO
+  anatomical_focus: ""              # TODO
+  drg_regions: []                   # TODO
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: ""                       # TODO
+
+# ─────────────────────────────────────────────────────────────
+# source_4: Krauter et al., 2025
+# ─────────────────────────────────────────────────────────────
+- id: krauter-2025
+  doi: "https://doi.org/10.1038/s42003-025-08315-1"
+  title: "Spatial organization, chromatin accessibility and gene-regulatory programs defining mouse sensory neurons"
+  authors: "Krauter et al."
+  year: 2025
+  journal: "Communications Biology"
+  short_label: "Krauter 2025"
+  consortium: ""                    # TODO: consortium affiliation
+  species:
+    - mouse
+  methods:                          # TODO: confirm full method list
+    - scRNA-seq
+    - ATAC-seq
+  cell_types_count: 22
+  sex: []                           # TODO
+  age_range: ""                     # TODO
+  anatomical_focus: ""              # TODO
+  drg_regions: []                   # TODO
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: ""                       # TODO
+
+# ─────────────────────────────────────────────────────────────
+# source_5: Qi et al., 2024
+# ─────────────────────────────────────────────────────────────
+- id: qi-2024
+  doi: "https://doi.org/10.1016/j.cell.2024.02.006"
+  title: "A mouse DRG genetic toolkit reveals morphological and physiological diversity of somatosensory neuron subtypes"
+  authors: "Qi, Iskols, Shi et al."
+  year: 2024
+  journal: "Cell"
+  short_label: "Qi 2024"
+  consortium: ""                    # TODO: consortium affiliation
+  species:
+    - mouse
+  methods:                          # TODO: confirm full method list
+    - scRNA-seq
+    - electrophysiology
+    - morphological analysis
+  cell_types_count: 17
+  sex: []                           # TODO
+  age_range: ""                     # TODO
+  anatomical_focus: ""              # TODO
+  drg_regions: []                   # TODO
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: ""                       # TODO
+
+# ─────────────────────────────────────────────────────────────
+# source_6: Kupari et al., 2021
+# ─────────────────────────────────────────────────────────────
+- id: kupari-2021
+  doi: "https://doi.org/10.1038/s41467-021-21725-z"
+  title: "Single cell transcriptomics of primate sensory neurons identifies cell types associated with chronic pain"
+  authors: "Kupari, Usoskin, Parisien et al."
+  year: 2021
+  journal: "Nature Communications"
+  short_label: "Kupari 2021"
+  consortium: ""                    # TODO: consortium affiliation
+  species:
+    - macaque
+  methods:                          # TODO: confirm full method list
+    - scRNA-seq
+  cell_types_count: 9
+  sex: []                           # TODO
+  age_range: ""                     # TODO
+  anatomical_focus: ""              # TODO
+  drg_regions: []                   # TODO
+  links:
+    nervosensus: "https://devservosensus.netlify.app/"
+    interlex: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    sparc: ""                       # TODO

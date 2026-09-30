@@ -1,0 +1,73 @@
+# PRECISION Human Pain Network — Community Landing Page
+# GitHub Pages + Jekyll with Minimal Mistakes (remote theme)
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+
+title: "PRECISION Human Pain Network"
+subtitle: "Community Resources"
+description: >-
+  Standardized cell type models for peripheral sensory neurons —
+  integrating nomenclature across species, methods, and research groups.
+url: "https://precision.scicrunch.org"
+baseurl: ""
+
+# Build
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Plugins (GitHub Pages whitelist)
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Site-wide defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "single"
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "single"
+      sidebar:
+        nav: "main"
+
+# Include _pages directory
+include:
+  - _pages
+
+# Navigation
+header:
+  overlay_color: "#1a3a5c"
+
+# Author / org sidebar (shown on pages with author_profile: true)
+author:
+  name: "PRECISION Human Pain Network"
+  bio: "NIH HEAL Initiative"
+  links:
+    - label: "InterLex"
+      icon: "fas fa-fw fa-globe"
+      url: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    - label: "NervoSensus"
+      icon: "fas fa-fw fa-project-diagram"
+      url: "https://devservosensus.netlify.app/"
+    - label: "SPARC"
+      icon: "fas fa-fw fa-database"
+      url: "https://sparc.science/data?type=dataset&selectedFacetIds=HEAL+Precision&skip=0"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/SciCrunch/PRECISION-Community"
+
+# Footer
+footer:
+  links:
+    - label: "SciCrunch"
+      icon: "fas fa-fw fa-link"
+      url: "https://scicrunch.org/sawg"
+    - label: "InterLex"
+      icon: "fas fa-fw fa-globe"
+      url: "https://scicrunch.org/nif/interlex/dashboard"
