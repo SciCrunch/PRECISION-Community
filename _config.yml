@@ -11,6 +11,9 @@ description: >-
 url: "https://precision.scicrunch.org"
 baseurl: ""
 
+atom_feed:
+  hide: true
+
 # Build
 markdown: kramdown
 kramdown:

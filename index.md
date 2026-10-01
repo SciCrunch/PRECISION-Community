@@ -117,12 +117,12 @@ Literature sources currently integrated into the PRECISION cell type framework.
 </div>
 <div class="tool-card">
 <h3>PRECISION Dashboard</h3>
-<p>Explore gene expression across PRECISION cell types on the SPARC portal. Search by gene symbol to see expression patterns.</p>
+<p>Explore gene expression across PRECISION cell types on the SPARC Portal. Search by gene symbol to see expression patterns.</p>
 <a href="https://sparc.science/apps/precision-dashboard" class="btn btn--primary btn--small">Open Dashboard</a>
 </div>
 <div class="tool-card">
 <h3>PRECISION Datasets</h3>
-<p>Access all publicly available PRECISION-related datasets deposited on the SPARC data portal.</p>
+<p>Access all publicly available PRECISION-related datasets deposited on the SPARC Portal.</p>
 <a href="https://staging.sparc.science/about/consortia/precision" class="btn btn--primary btn--small">View Datasets</a>
 </div>
 </div>
