@@ -12,14 +12,22 @@ $lighter-gray: #ebeef4;
 $footer-background-color: #262670;
 
 // Override Minimal Mistakes type sizes BEFORE import
-$type-size-1: 1.5rem;
-$type-size-2: 1.25rem;
-$type-size-3: 1.125rem;
-$type-size-4: 1rem;
-$type-size-5: 1rem;
+$type-size-1: 1.5em;
+$type-size-2: 1.25em;
+$type-size-3: 1.125em;
+$type-size-4: 1em;
+$type-size-5: 1em;
+
+// Lock root font-size at 16px — MM scales it up to 22px at wide viewports
+$doc-font-size: 16;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
+
+// Lock root font-size — prevent MM from scaling to 18-22px at wide viewports
+html {
+  font-size: 16px !important;
+}
 
 // Masthead — keep the bar, hide nav links (single-page site)
 .masthead {
