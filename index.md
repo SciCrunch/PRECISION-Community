@@ -88,11 +88,9 @@ Literature sources currently integrated into the PRECISION cell type framework.
 {% if paper.sex.size > 0 %}<tr><td><strong>Sex</strong></td><td>{{ paper.sex | join: ", " }}</td></tr>{% endif %}
 {% if paper.age_range != "" %}<tr><td><strong>Age range</strong></td><td>{{ paper.age_range }}</td></tr>{% endif %}
 {% if paper.anatomical_focus != "" %}<tr><td><strong>Anatomical focus</strong></td><td>{{ paper.anatomical_focus }}</td></tr>{% endif %}
+{% if paper.drg_regions.size > 0 %}<tr><td><strong>DRG regions</strong></td><td>{{ paper.drg_regions | join: ", " }}</td></tr>{% endif %}
 </tbody>
 </table>
-{% if paper.drg_regions.size > 0 %}
-<p><strong>DRG regions sampled:</strong> {{ paper.drg_regions | join: ", " }}</p>
-{% endif %}
 <div class="source-card__links">
 {% if paper.links.interlex != "" %}<a href="{{ paper.links.interlex }}" class="btn btn--primary btn--small">Browse Cell Types</a>{% endif %}
 {% if paper.links.nervosensus != "" %}<a href="{{ paper.links.nervosensus }}" class="btn btn--primary btn--small">Explore Cell Type Relationships</a>{% endif %}

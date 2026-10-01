@@ -1,6 +1,7 @@
 ---
 ---
 
+// Colors
 $primary-color: #262670;
 $link-color: #3b4fbf;
 $background-color: #f5f7fa;
@@ -9,6 +10,13 @@ $muted-text-color: #5d6074;
 $border-color: #d4d9e4;
 $lighter-gray: #ebeef4;
 $footer-background-color: #262670;
+
+// Override Minimal Mistakes type sizes BEFORE import
+$type-size-1: 1.5rem;
+$type-size-2: 1.25rem;
+$type-size-3: 1.125rem;
+$type-size-4: 1rem;
+$type-size-5: 1rem;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
@@ -28,22 +36,8 @@ body {
   background-color: $background-color;
 }
 
-// Heading sizes — use !important to override Minimal Mistakes defaults
-h1, .page__title {
-  font-size: 1.5rem !important;
+.page__title {
   color: $primary-color;
-}
-
-h2 {
-  font-size: 1.25rem !important;
-}
-
-h3 {
-  font-size: 1.1rem !important;
-}
-
-.page__lead {
-  font-size: 1.05rem !important;
 }
 
 .greedy-nav a {
@@ -61,7 +55,6 @@ h3 {
 .page__hero--overlay {
   background-color: $primary-color;
 
-  // Hero action buttons: 2×2 grid
   .page__lead + p {
     display: flex;
     flex-wrap: wrap;
@@ -107,10 +100,11 @@ h3 {
     table-layout: auto;
     margin-bottom: 1rem;
     border-collapse: collapse;
+    border: none;
 
     td {
-      padding: 0.4rem 0.75rem;
-      border: 1px solid $border-color;
+      padding: 0.35rem 0.5rem;
+      border: none;
       vertical-align: top;
     }
 
@@ -134,10 +128,12 @@ h3 {
 // Data at a Glance table
 .glance-table table {
   width: auto;
+  border: none;
 
   td {
-    padding: 0.4rem 0.75rem;
-    border-bottom: 1px solid $border-color;
+    padding: 0.35rem 0.75rem;
+    border: none;
+    border-bottom: 1px solid $lighter-gray;
     vertical-align: top;
   }
 
