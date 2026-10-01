@@ -2,15 +2,17 @@
 layout: splash
 title: "PRECISION Human Pain Network"
 header:
-  overlay_color: "#1a3a5c"
+  overlay_color: "#262670"
   overlay_filter: "0.4"
   actions:
-    - label: "Explore in NervoSensus"
-      url: "https://devservosensus.netlify.app/"
-    - label: "Browse Ontology"
+    - label: "Browse Cell Types"
       url: "https://interlex.dev.metacell.us/precision/ontology/precision"
+    - label: "Explore Cell Type Relationships in NervoSensus"
+      url: "https://nervosensus.netlify.app/"
     - label: "PRECISION Dashboard"
       url: "https://sparc.science/apps/precision-dashboard"
+    - label: "PRECISION Datasets"
+      url: "https://staging.sparc.science/about/consortia/precision"
 excerpt: >
   A community of researchers building standardized cell type models for peripheral
   sensory neurons — integrating nomenclature from multiple published sources and species
@@ -24,10 +26,11 @@ unified framework for classifying, comparing, and annotating pain-related neuron
 types across species and experimental methods. By harmonizing cell type
 definitions from multiple research groups, the network enables:
 
-- **Cross-study comparison** of sensory neuron subtypes
-- **Standardized nomenclature** anchored in the Neuron Phenotype Ontology (NPO)
-- **Open data** linked through InterLex identifiers (npokb CURIEs)
-- **Interactive visualization** through NervoSensus and the PRECISION Dashboard
+- **Cross-study comparison** of sensory neuron subtypes as reported in each source publication
+- **Persistent Identifiers** for putative types enable a stable manner to track harmonization 
+- **Standardized nomenclature** links PRECISION data to other consortia efforts
+- **Interactive visualization** through NervoSensus for Cell Type Relationships and the PRECISION Dashboard to show transcriptomic profiles within clusters
+- **Comprehensive Open data** of the molecular signatures, genes, cell types, and tissues that underlie human pain types, conditions, and disease for use by the scientific community
 
 ---
 
@@ -52,21 +55,50 @@ definitions from multiple research groups, the network enables:
 
 | | |
 |---|---|
-| **Papers integrated** | {{ site.data.papers | size }} |
+| **Sources integrated** | {{ site.data.papers | size }} |
 | **Cell type entries** | {{ total_cells }} |
 | **Species** | {% assign sp = all_species | split: "," %}{% for s in sp %}{% if s != "" %}{{ s }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
 | **Methods** | {% assign mt = all_methods | split: "," %}{% for m in mt %}{% if m != "" %}{{ m }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
 
 ---
 
-## Papers
+## Sources
 
-Summary of literature sources currently integrated into the PRECISION cell type framework.
-See the [full paper table](/papers/) for details, or browse by [method](/by-method/) or [species](/by-species/).
+Literature sources currently integrated into the PRECISION cell type framework.
 
-| Paper | Year | Species | Cell Types | Methods |
-|---|---|---|---|---|
-{% for paper in site.data.papers %} | [{{ paper.short_label }}]({{ paper.doi }}) | {{ paper.year }} | {{ paper.species | join: ", " }} | {{ paper.cell_types_count }} | {{ paper.methods | join: ", " }} |
+| Title | Authors | Year | Species | Cell Types | Methods |
+|---|---|---|---|---|---|
+{% for paper in site.data.papers %} | [{{ paper.title }}]({{ paper.doi }}) | {{ paper.authors }} | {{ paper.year }} | {{ paper.species | join: ", " }} | {{ paper.cell_types_count }} | {{ paper.methods | join: ", " }} |
+{% endfor %}
+
+{% for paper in site.data.papers %}
+
+### {{ paper.authors }}, {{ paper.year }}
+
+**{{ paper.title }}**
+
+| | |
+|---|---|
+| **DOI** | [{{ paper.doi | remove: "https://doi.org/" }}]({{ paper.doi }}) |
+| **Species** | {{ paper.species | join: ", " }} |
+| **Cell types** | {{ paper.cell_types_count }} |
+| **Methods** | {{ paper.methods | join: ", " }} |
+{% if paper.sex.size > 0 %}| **Sex** | {{ paper.sex | join: ", " }} |
+{% endif %}{% if paper.age_range != "" %}| **Age range** | {{ paper.age_range }} |
+{% endif %}{% if paper.anatomical_focus != "" %}| **Anatomical focus** | {{ paper.anatomical_focus }} |
+{% endif %}
+
+{% if paper.drg_regions.size > 0 %}
+**DRG regions sampled:** {{ paper.drg_regions | join: ", " }}
+{% endif %}
+
+**Explore this source's data:**
+{% if paper.links.nervosensus != "" %}- [View in NervoSensus]({{ paper.links.nervosensus }})
+{% endif %}{% if paper.links.interlex != "" %}- [Browse in InterLex]({{ paper.links.interlex }})
+{% endif %}{% if paper.links.precision_dashboard != "" %}- [PRECISION Dashboard]({{ paper.links.precision_dashboard }})
+{% endif %}{% if paper.links.dataset != "" %}- [Dataset]({{ paper.links.dataset }})
+{% endif %}
+
 {% endfor %}
 
 ---
@@ -78,11 +110,11 @@ See the [full paper table](/papers/) for details, or browse by [method](/by-meth
 <div class="feature__item">
 <div class="archive__item">
 <div class="archive__item-body">
-<h2 class="archive__item-title">NervoSensus</h2>
+<h2 class="archive__item-title">Cell Types Knowledge Base</h2>
 <div class="archive__item-excerpt">
-<p>Interactive cell type visualization tool. Explore cluster relationships, lineage views, and cross-source comparisons for peripheral sensory neurons.</p>
+<p>Browse the full PRECISION cell type ontology — nomenclature, markers, and anatomical annotations anchored by persistent identifiers.</p>
 </div>
-<p><a href="https://devservosensus.netlify.app/" class="btn btn--primary">Launch NervoSensus</a></p>
+<p><a href="https://interlex.dev.metacell.us/precision/ontology/precision" class="btn btn--primary">Browse Cell Types</a></p>
 </div>
 </div>
 </div>
@@ -90,11 +122,11 @@ See the [full paper table](/papers/) for details, or browse by [method](/by-meth
 <div class="feature__item">
 <div class="archive__item">
 <div class="archive__item-body">
-<h2 class="archive__item-title">InterLex Ontology</h2>
+<h2 class="archive__item-title">NervoSensus</h2>
 <div class="archive__item-excerpt">
-<p>Browse the full PRECISION cell type ontology — nomenclature, markers, and anatomical annotations anchored by npokb identifiers.</p>
+<p>Interactive cell type visualization tool. Explore cluster relationships, lineage views, and cross-source comparisons for peripheral sensory neurons.</p>
 </div>
-<p><a href="https://interlex.dev.metacell.us/precision/ontology/precision" class="btn btn--primary">Browse Ontology</a></p>
+<p><a href="https://nervosensus.netlify.app/" class="btn btn--primary">Launch NervoSensus</a></p>
 </div>
 </div>
 </div>
@@ -114,11 +146,11 @@ See the [full paper table](/papers/) for details, or browse by [method](/by-meth
 <div class="feature__item">
 <div class="archive__item">
 <div class="archive__item-body">
-<h2 class="archive__item-title">Public Datasets</h2>
+<h2 class="archive__item-title">PRECISION Datasets</h2>
 <div class="archive__item-excerpt">
 <p>Access all publicly available PRECISION-related datasets deposited on the SPARC data portal.</p>
 </div>
-<p><a href="https://sparc.science/data?type=dataset&selectedFacetIds=HEAL+Precision&skip=0" class="btn btn--primary">View Datasets</a></p>
+<p><a href="https://staging.sparc.science/about/consortia/precision" class="btn btn--primary">View Datasets</a></p>
 </div>
 </div>
 </div>

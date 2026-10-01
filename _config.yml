@@ -42,7 +42,7 @@ include:
 
 # Navigation
 header:
-  overlay_color: "#1a3a5c"
+  overlay_color: "#262670"
 
 # Author / org sidebar (shown on pages with author_profile: true)
 author:

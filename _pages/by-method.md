@@ -34,7 +34,7 @@ uses, so cross-modal studies show up in multiple sections.
 
 | Paper | Year | Species | Cell Types |
 |---|---|---|---|
-{% for paper in site.data.papers %}{% if paper.methods contains method %}| [{{ paper.short_label }}]({{ paper.doi }}) | {{ paper.year }} | {{ paper.species | join: ", " }} | {{ paper.cell_types_count }} |
+{% for paper in site.data.papers %}{% if paper.methods contains method %}| [{{ paper.authors }}]({{ paper.doi }}) | {{ paper.year }} | {{ paper.species | join: ", " }} | {{ paper.cell_types_count }} |
 {% endif %}{% endfor %}
 
 {% endif %}

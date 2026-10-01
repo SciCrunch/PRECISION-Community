@@ -18,11 +18,9 @@ harmonized through the Neuron Phenotype Ontology (NPO) and visualized in
 
 ---
 
-## {{ paper.short_label }}
+## {{ paper.authors }}, {{ paper.year }}
 
 **{{ paper.title }}**
-
-{{ paper.authors }} ({{ paper.year }}) *{{ paper.journal }}*
 
 | | |
 |---|---|
@@ -30,8 +28,7 @@ harmonized through the Neuron Phenotype Ontology (NPO) and visualized in
 | **Species** | {{ paper.species | join: ", " }} |
 | **Cell types** | {{ paper.cell_types_count }} |
 | **Methods** | {{ paper.methods | join: ", " }} |
-{% if paper.consortium != "" %}| **Consortium** | {{ paper.consortium }} |
-{% endif %}{% if paper.sex.size > 0 %}| **Sex** | {{ paper.sex | join: ", " }} |
+{% if paper.sex.size > 0 %}| **Sex** | {{ paper.sex | join: ", " }} |
 {% endif %}{% if paper.age_range != "" %}| **Age range** | {{ paper.age_range }} |
 {% endif %}{% if paper.anatomical_focus != "" %}| **Anatomical focus** | {{ paper.anatomical_focus }} |
 {% endif %}
@@ -45,7 +42,8 @@ harmonized through the Neuron Phenotype Ontology (NPO) and visualized in
 **Explore this paper's data:**
 {% if paper.links.nervosensus != "" %}- [View in NervoSensus]({{ paper.links.nervosensus }})
 {% endif %}{% if paper.links.interlex != "" %}- [Browse in InterLex]({{ paper.links.interlex }})
-{% endif %}{% if paper.links.sparc != "" %}- [SPARC dataset]({{ paper.links.sparc }})
+{% endif %}{% if paper.links.precision_dashboard != "" %}- [PRECISION Dashboard]({{ paper.links.precision_dashboard }})
+{% endif %}{% if paper.links.dataset != "" %}- [Dataset]({{ paper.links.dataset }})
 {% endif %}
 
 {% endfor %}

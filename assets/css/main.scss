@@ -1,0 +1,41 @@
+---
+---
+
+$primary-color: #262670;
+$link-color: #3b4fbf;
+$background-color: #f5f7fa;
+$text-color: #2d3142;
+$muted-text-color: #5d6074;
+$border-color: #d4d9e4;
+$lighter-gray: #ebeef4;
+$footer-background-color: #262670;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+body {
+  background-color: $background-color;
+}
+
+.masthead {
+  border-bottom-color: $border-color;
+}
+
+.page__title {
+  color: $primary-color;
+}
+
+.greedy-nav a {
+  color: $muted-text-color;
+  &:hover { color: $primary-color; }
+  &.site-title { color: $primary-color; font-weight: 700; }
+}
+
+.btn--primary {
+  background-color: $primary-color;
+  &:hover { background-color: $link-color; }
+}
+
+.page__hero--overlay {
+  background-color: $primary-color;
+}

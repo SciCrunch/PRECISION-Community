@@ -31,7 +31,7 @@ cross-species atlas) appear under each species they cover.
 
 | Paper | Year | Methods | Cell Types |
 |---|---|---|---|
-{% for paper in site.data.papers %}{% if paper.species contains sp %}| [{{ paper.short_label }}]({{ paper.doi }}) | {{ paper.year }} | {{ paper.methods | join: ", " }} | {{ paper.cell_types_count }} |
+{% for paper in site.data.papers %}{% if paper.species contains sp %}| [{{ paper.authors }}]({{ paper.doi }}) | {{ paper.year }} | {{ paper.methods | join: ", " }} | {{ paper.cell_types_count }} |
 {% endif %}{% endfor %}
 
 {% endif %}
