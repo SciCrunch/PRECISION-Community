@@ -13,29 +13,33 @@ $footer-background-color: #262670;
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
-// Hide masthead — single-page site, no navigation needed
+// Masthead — keep the bar, hide nav links (single-page site)
 .masthead {
-  display: none;
+  .greedy-nav {
+    .visible-links,
+    .hidden-links,
+    button {
+      display: none !important;
+    }
+  }
 }
 
 body {
   background-color: $background-color;
 }
 
-// Reduce heading sizes
-.page__title {
+// Heading sizes — use !important to override Minimal Mistakes defaults
+h1, .page__title {
+  font-size: 1.5rem !important;
   color: $primary-color;
-  font-size: 1.75rem !important;
 }
 
-.page__content {
-  h2 {
-    font-size: 1.4rem;
-  }
+h2 {
+  font-size: 1.25rem !important;
+}
 
-  h3 {
-    font-size: 1.15rem;
-  }
+h3 {
+  font-size: 1.1rem !important;
 }
 
 .page__lead {
@@ -127,7 +131,7 @@ body {
   border-top: 1px solid $lighter-gray;
 }
 
-// Data at a Glance table styling
+// Data at a Glance table
 .glance-table table {
   width: auto;
 
@@ -140,5 +144,43 @@ body {
   td:first-child {
     white-space: nowrap;
     font-weight: 600;
+  }
+}
+
+// Tools & Resources — 2×2 grid
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tool-card {
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin-top: 0;
+    color: $primary-color;
+  }
+
+  p {
+    flex: 1;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: $muted-text-color;
+  }
+
+  .btn {
+    align-self: flex-start;
   }
 }

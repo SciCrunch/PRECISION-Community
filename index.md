@@ -94,9 +94,9 @@ Literature sources currently integrated into the PRECISION cell type framework.
 <p><strong>DRG regions sampled:</strong> {{ paper.drg_regions | join: ", " }}</p>
 {% endif %}
 <div class="source-card__links">
-{% if paper.links.nervosensus != "" %}<a href="{{ paper.links.nervosensus }}" class="btn btn--primary btn--small">NervoSensus</a>{% endif %}
-{% if paper.links.interlex != "" %}<a href="{{ paper.links.interlex }}" class="btn btn--primary btn--small">InterLex</a>{% endif %}
-{% if paper.links.precision_dashboard != "" %}<a href="{{ paper.links.precision_dashboard }}" class="btn btn--primary btn--small">Dashboard</a>{% endif %}
+{% if paper.links.interlex != "" %}<a href="{{ paper.links.interlex }}" class="btn btn--primary btn--small">Browse Cell Types</a>{% endif %}
+{% if paper.links.nervosensus != "" %}<a href="{{ paper.links.nervosensus }}" class="btn btn--primary btn--small">Explore Cell Type Relationships</a>{% endif %}
+{% if paper.links.precision_dashboard != "" %}<a href="{{ paper.links.precision_dashboard }}" class="btn btn--primary btn--small">PRECISION Dashboard</a>{% endif %}
 {% if paper.links.dataset != "" %}<a href="{{ paper.links.dataset }}" class="btn btn--primary btn--small">Dataset</a>{% endif %}
 </div>
 </div>
@@ -106,54 +106,25 @@ Literature sources currently integrated into the PRECISION cell type framework.
 
 ## Tools & Resources
 
-<div class="feature__wrapper">
-
-<div class="feature__item">
-<div class="archive__item">
-<div class="archive__item-body">
-<h2 class="archive__item-title">Cell Types Knowledge Base</h2>
-<div class="archive__item-excerpt">
+<div class="tools-grid">
+<div class="tool-card">
+<h3>Cell Types Knowledge Base</h3>
 <p>Browse the full PRECISION cell type ontology — nomenclature, markers, and anatomical annotations anchored by persistent identifiers.</p>
+<a href="https://interlex.dev.metacell.us/precision/ontology/precision" class="btn btn--primary btn--small">Browse Cell Types</a>
 </div>
-<p><a href="https://interlex.dev.metacell.us/precision/ontology/precision" class="btn btn--primary">Browse Cell Types</a></p>
-</div>
-</div>
-</div>
-
-<div class="feature__item">
-<div class="archive__item">
-<div class="archive__item-body">
-<h2 class="archive__item-title">NervoSensus</h2>
-<div class="archive__item-excerpt">
+<div class="tool-card">
+<h3>NervoSensus</h3>
 <p>Interactive cell type visualization tool. Explore cluster relationships, lineage views, and cross-source comparisons for peripheral sensory neurons.</p>
+<a href="https://nervosensus.netlify.app/" class="btn btn--primary btn--small">Launch NervoSensus</a>
 </div>
-<p><a href="https://nervosensus.netlify.app/" class="btn btn--primary">Launch NervoSensus</a></p>
-</div>
-</div>
-</div>
-
-<div class="feature__item">
-<div class="archive__item">
-<div class="archive__item-body">
-<h2 class="archive__item-title">PRECISION Dashboard</h2>
-<div class="archive__item-excerpt">
+<div class="tool-card">
+<h3>PRECISION Dashboard</h3>
 <p>Explore gene expression across PRECISION cell types on the SPARC portal. Search by gene symbol to see expression patterns.</p>
+<a href="https://sparc.science/apps/precision-dashboard" class="btn btn--primary btn--small">Open Dashboard</a>
 </div>
-<p><a href="https://sparc.science/apps/precision-dashboard" class="btn btn--primary">Open Dashboard</a></p>
-</div>
-</div>
-</div>
-
-<div class="feature__item">
-<div class="archive__item">
-<div class="archive__item-body">
-<h2 class="archive__item-title">PRECISION Datasets</h2>
-<div class="archive__item-excerpt">
+<div class="tool-card">
+<h3>PRECISION Datasets</h3>
 <p>Access all publicly available PRECISION-related datasets deposited on the SPARC data portal.</p>
+<a href="https://staging.sparc.science/about/consortia/precision" class="btn btn--primary btn--small">View Datasets</a>
 </div>
-<p><a href="https://staging.sparc.science/about/consortia/precision" class="btn btn--primary">View Datasets</a></p>
-</div>
-</div>
-</div>
-
 </div>
