@@ -98,11 +98,6 @@ body {
     padding-bottom: 0.5rem;
   }
 
-  // Hide the empty thead on key-value tables
-  table thead {
-    display: none;
-  }
-
   table {
     width: 100%;
     table-layout: auto;
@@ -132,7 +127,18 @@ body {
   border-top: 1px solid $lighter-gray;
 }
 
-// Data at a Glance — hide empty thead
-.glance-table table thead {
-  display: none;
+// Data at a Glance table styling
+.glance-table table {
+  width: auto;
+
+  td {
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid $border-color;
+    vertical-align: top;
+  }
+
+  td:first-child {
+    white-space: nowrap;
+    font-weight: 600;
+  }
 }

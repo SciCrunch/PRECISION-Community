@@ -53,15 +53,15 @@ definitions from multiple research groups, the network enables:
   {% endfor %}
 {% endfor %}
 
-<div class="glance-table" markdown="1">
-
-| | |
-|---|---|
-| **Sources integrated** | {{ site.data.papers | size }} |
-| **Cell type entries** | {{ total_cells }} |
-| **Species** | {% assign sp = all_species | split: "," %}{% for s in sp %}{% if s != "" %}{{ s }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
-| **Methods** | {% assign mt = all_methods | split: "," %}{% for m in mt %}{% if m != "" %}{{ m }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
-
+<div class="glance-table">
+<table>
+<tbody>
+<tr><td><strong>Sources integrated</strong></td><td>{{ site.data.papers | size }}</td></tr>
+<tr><td><strong>Cell type entries</strong></td><td>{{ total_cells }}</td></tr>
+<tr><td><strong>Species</strong></td><td>{% assign sp = all_species | split: "," %}{% for s in sp %}{% if s != "" %}{{ s }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}</td></tr>
+<tr><td><strong>Methods</strong></td><td>{% assign mt = all_methods | split: "," %}{% for m in mt %}{% if m != "" %}{{ m }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}</td></tr>
+</tbody>
+</table>
 </div>
 
 ---
@@ -76,34 +76,29 @@ Literature sources currently integrated into the PRECISION cell type framework.
 {% endfor %}
 
 {% for paper in site.data.papers %}
-<div class="source-card" markdown="1">
-
-### {{ paper.authors }}, {{ paper.year }}
-
-**{{ paper.title }}**
-
-| | |
-|---|---|
-| **DOI** | [{{ paper.doi | remove: "https://doi.org/" }}]({{ paper.doi }}) |
-| **Species** | {{ paper.species | join: ", " }} |
-| **Cell types** | {{ paper.cell_types_count }} |
-| **Methods** | {{ paper.methods | join: ", " }} |
-{% if paper.sex.size > 0 %}| **Sex** | {{ paper.sex | join: ", " }} |
-{% endif %}{% if paper.age_range != "" %}| **Age range** | {{ paper.age_range }} |
-{% endif %}{% if paper.anatomical_focus != "" %}| **Anatomical focus** | {{ paper.anatomical_focus }} |
-{% endif %}
-
+<div class="source-card">
+<h3>{{ paper.authors }}, {{ paper.year }}</h3>
+<p><strong>{{ paper.title }}</strong></p>
+<table>
+<tbody>
+<tr><td><strong>DOI</strong></td><td><a href="{{ paper.doi }}">{{ paper.doi | remove: "https://doi.org/" }}</a></td></tr>
+<tr><td><strong>Species</strong></td><td>{{ paper.species | join: ", " }}</td></tr>
+<tr><td><strong>Cell types</strong></td><td>{{ paper.cell_types_count }}</td></tr>
+<tr><td><strong>Methods</strong></td><td>{{ paper.methods | join: ", " }}</td></tr>
+{% if paper.sex.size > 0 %}<tr><td><strong>Sex</strong></td><td>{{ paper.sex | join: ", " }}</td></tr>{% endif %}
+{% if paper.age_range != "" %}<tr><td><strong>Age range</strong></td><td>{{ paper.age_range }}</td></tr>{% endif %}
+{% if paper.anatomical_focus != "" %}<tr><td><strong>Anatomical focus</strong></td><td>{{ paper.anatomical_focus }}</td></tr>{% endif %}
+</tbody>
+</table>
 {% if paper.drg_regions.size > 0 %}
-**DRG regions sampled:** {{ paper.drg_regions | join: ", " }}
+<p><strong>DRG regions sampled:</strong> {{ paper.drg_regions | join: ", " }}</p>
 {% endif %}
-
 <div class="source-card__links">
 {% if paper.links.nervosensus != "" %}<a href="{{ paper.links.nervosensus }}" class="btn btn--primary btn--small">NervoSensus</a>{% endif %}
 {% if paper.links.interlex != "" %}<a href="{{ paper.links.interlex }}" class="btn btn--primary btn--small">InterLex</a>{% endif %}
 {% if paper.links.precision_dashboard != "" %}<a href="{{ paper.links.precision_dashboard }}" class="btn btn--primary btn--small">Dashboard</a>{% endif %}
 {% if paper.links.dataset != "" %}<a href="{{ paper.links.dataset }}" class="btn btn--primary btn--small">Dataset</a>{% endif %}
 </div>
-
 </div>
 {% endfor %}
 
