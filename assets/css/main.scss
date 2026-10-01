@@ -22,8 +22,24 @@ body {
   background-color: $background-color;
 }
 
+// Reduce heading sizes
 .page__title {
   color: $primary-color;
+  font-size: 1.75rem !important;
+}
+
+.page__content {
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+}
+
+.page__lead {
+  font-size: 1.05rem !important;
 }
 
 .greedy-nav a {
@@ -88,11 +104,21 @@ body {
   }
 
   table {
+    width: 100%;
+    table-layout: auto;
     margin-bottom: 1rem;
+    border-collapse: collapse;
+
+    td {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid $border-color;
+      vertical-align: top;
+    }
 
     td:first-child {
       white-space: nowrap;
-      width: 1%;
+      width: 140px;
+      min-width: 140px;
     }
   }
 }
