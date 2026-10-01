@@ -13,12 +13,13 @@ $footer-background-color: #262670;
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
-body {
-  background-color: $background-color;
+// Hide masthead — single-page site, no navigation needed
+.masthead {
+  display: none;
 }
 
-.masthead {
-  border-bottom-color: $border-color;
+body {
+  background-color: $background-color;
 }
 
 .page__title {
@@ -36,6 +37,76 @@ body {
   &:hover { background-color: $link-color; }
 }
 
+// Hero section
 .page__hero--overlay {
   background-color: $primary-color;
+
+  // Hero action buttons: 2×2 grid
+  .page__lead + p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 640px;
+    margin: 1.5rem auto 0;
+  }
+
+  .btn--light-outline {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 260px;
+    text-align: center;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #fff;
+    }
+  }
+}
+
+// Source detail cards
+.source-card {
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  h3 {
+    margin-top: 0;
+    color: $primary-color;
+    border-bottom: 2px solid $lighter-gray;
+    padding-bottom: 0.5rem;
+  }
+
+  // Hide the empty thead on key-value tables
+  table thead {
+    display: none;
+  }
+
+  table {
+    margin-bottom: 1rem;
+
+    td:first-child {
+      white-space: nowrap;
+      width: 1%;
+    }
+  }
+}
+
+.source-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid $lighter-gray;
+}
+
+// Data at a Glance — hide empty thead
+.glance-table table thead {
+  display: none;
 }

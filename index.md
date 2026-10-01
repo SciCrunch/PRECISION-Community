@@ -7,7 +7,7 @@ header:
   actions:
     - label: "Browse Cell Types"
       url: "https://interlex.dev.metacell.us/precision/ontology/precision"
-    - label: "Explore Cell Type Relationships in NervoSensus"
+    - label: "Explore Cell Type Relationships"
       url: "https://nervosensus.netlify.app/"
     - label: "PRECISION Dashboard"
       url: "https://sparc.science/apps/precision-dashboard"
@@ -53,12 +53,16 @@ definitions from multiple research groups, the network enables:
   {% endfor %}
 {% endfor %}
 
+<div class="glance-table" markdown="1">
+
 | | |
 |---|---|
 | **Sources integrated** | {{ site.data.papers | size }} |
 | **Cell type entries** | {{ total_cells }} |
 | **Species** | {% assign sp = all_species | split: "," %}{% for s in sp %}{% if s != "" %}{{ s }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
 | **Methods** | {% assign mt = all_methods | split: "," %}{% for m in mt %}{% if m != "" %}{{ m }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %} |
+
+</div>
 
 ---
 
@@ -72,6 +76,7 @@ Literature sources currently integrated into the PRECISION cell type framework.
 {% endfor %}
 
 {% for paper in site.data.papers %}
+<div class="source-card" markdown="1">
 
 ### {{ paper.authors }}, {{ paper.year }}
 
@@ -92,13 +97,14 @@ Literature sources currently integrated into the PRECISION cell type framework.
 **DRG regions sampled:** {{ paper.drg_regions | join: ", " }}
 {% endif %}
 
-**Explore this source's data:**
-{% if paper.links.nervosensus != "" %}- [View in NervoSensus]({{ paper.links.nervosensus }})
-{% endif %}{% if paper.links.interlex != "" %}- [Browse in InterLex]({{ paper.links.interlex }})
-{% endif %}{% if paper.links.precision_dashboard != "" %}- [PRECISION Dashboard]({{ paper.links.precision_dashboard }})
-{% endif %}{% if paper.links.dataset != "" %}- [Dataset]({{ paper.links.dataset }})
-{% endif %}
+<div class="source-card__links">
+{% if paper.links.nervosensus != "" %}<a href="{{ paper.links.nervosensus }}" class="btn btn--primary btn--small">NervoSensus</a>{% endif %}
+{% if paper.links.interlex != "" %}<a href="{{ paper.links.interlex }}" class="btn btn--primary btn--small">InterLex</a>{% endif %}
+{% if paper.links.precision_dashboard != "" %}<a href="{{ paper.links.precision_dashboard }}" class="btn btn--primary btn--small">Dashboard</a>{% endif %}
+{% if paper.links.dataset != "" %}<a href="{{ paper.links.dataset }}" class="btn btn--primary btn--small">Dataset</a>{% endif %}
+</div>
 
+</div>
 {% endfor %}
 
 ---
