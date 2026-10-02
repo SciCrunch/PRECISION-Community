@@ -72,11 +72,11 @@ Literature sources currently integrated into the PRECISION cell type framework.
 
 | Title | Authors | Year | Species | Cell Types | Methods |
 |---|---|---|---|---|---|
-{% for paper in site.data.papers %} | [{{ paper.title }}]({{ paper.doi }}) | {{ paper.authors }} | {{ paper.year }} | {{ paper.species | join: ", " }} | {{ paper.cell_types_count }} | {{ paper.methods | join: ", " }} |
+{% for paper in site.data.papers %} | [{{ paper.title }}](#{{ paper.id }}) | {{ paper.authors }} | {{ paper.year }} | {{ paper.species | join: ", " }} | {{ paper.cell_types_count }} | {{ paper.methods | join: ", " }} |
 {% endfor %}
 
 {% for paper in site.data.papers %}
-<div class="source-card">
+<div class="source-card" id="{{ paper.id }}">
 <h3>{{ paper.authors }}, {{ paper.year }}</h3>
 <p><strong>{{ paper.title }}</strong></p>
 <table>
